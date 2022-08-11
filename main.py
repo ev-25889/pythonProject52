@@ -78,9 +78,9 @@ def get_mobile_details(mobile_id):
                                             (30, 'model3', 3000)'''
         cursor.execute(insert_query)
         connection.commit()
-        """
+        
         select_query = "select * from mobile where id= %s"
-
+       
         cursor.execute(select_query, (mobile_id,))
         print("выбор строк из таблицы мобайл с помощью курсор.фетчол")
         mobile_records = cursor.fetchall()
@@ -90,7 +90,12 @@ def get_mobile_details(mobile_id):
             print("ID =", row[0],)
             print("Model =", row[1])
             print("Cena =", row[2], "\n")
-
+        """
+        # SQL-запрос на удаление таблиц
+        drop_table_query = '''DROP TABLE IF EXISTS mobile, item;'''
+        cursor.execute(drop_table_query)
+        connection.commit()
+        print('таблицы удалены')
 
     except (Exception, Error) as error:
         print("Ошибка при работе с PostgreSQL", error)
