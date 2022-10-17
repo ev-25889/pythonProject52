@@ -1,0 +1,15 @@
+class Solution:
+    def twoSum(self, nums0, target):
+        nums = nums0.split(',')
+        result = '['
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if int(nums[i]) + int(nums[j]) == target:
+                    result += str(i) + ','
+                    result += str(j) + ']'
+                    return result
+
+
+s = Solution()
+nums0, target = input()[1:-1], int(input())
+print(s.twoSum(nums0=nums0, target=target))
